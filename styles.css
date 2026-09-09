@@ -1379,21 +1379,203 @@ body {
 }
 
 /* Telas Extremamente Pequenas (até 400px) */
-@media (max-width: 400px) {
+/* ============================================================
+   RESPONSIVIDADE MOBILE OTIMIZADA (SUBSTITUA SEU MEDIA QUERY ANTIGO)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Fix de Altura do Navegador Mobile */
+  body {
+    height: 100dvh !important;
+  }
+
+  .deck-header {
+    height: 48px !important;
+    padding: 0 12px !important;
+  }
+
+  .progress-bar-container {
+    max-width: 80px !important;
+    margin: 0 8px !important;
+  }
+
+  .deck-brand, .deck-meta {
+    font-size: 11px !important;
+  }
+
+  /* Palco dos Slides com Rolagem Touch Suave */
+  .deck-stage {
+    height: calc(100dvh - 104px) !important; /* Altura exata descontando Header + Footer */
+  }
+
+  .slide {
+    padding: 16px 16px 40px 16px !important;
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    height: 100% !important;
+  }
+
+  /* Forçar TODAS as Grids para 1 Coluna Única */
+  .cover-grid,
+  .two-col-grid,
+  .four-cards-grid,
+  .comparison-grid,
+  .intro-grid,
+  .concepts-grid,
+  .demo-container,
+  .conclusion-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Redimensionamento Agressivo da Tipografia */
   .hero-title {
-    font-size: 27px;
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .slide-header {
+    margin-bottom: 16px !important;
+  }
+
+  .slide-header h2 {
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+  }
+
+  .slide-header .section-sub,
+  .hero-subtitle {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .tag-pill, .section-tag {
+    font-size: 10px !important;
+    padding: 4px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Controle de Altura de Imagens no Celular */
+  .image-frame img,
+  .image-card-full,
+  .card-image-wrap,
+  .image-card-full img {
+    height: 180px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Compactação dos Cards */
+  .feature-card,
+  .info-box,
+  .comp-card,
+  .card-body,
+  .concept-card,
+  .metric-card,
+  .left-panel,
+  .right-panel {
+    padding: 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .icon-wrap, .box-icon {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
   }
 
   .btn-hero {
-    padding: 12px 16px;
-    font-size: 14px;
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
   }
 
-  .nav-control-btn span {
-    display: none; /* Deixa apenas as setas nos botões para economizar espaço */
+  .key-hint {
+    display: none !important; /* Remove atalho de teclado no touch */
+  }
+
+  /* Badges de Imagem */
+  .glass-overlay-card {
+    padding: 6px 10px !important;
+  }
+  .glass-overlay-card.top-badge { top: 8px !important; right: 8px !important; }
+  .glass-overlay-card.bottom-badge { bottom: 8px !important; left: 8px !important; }
+
+  /* Slide 8 (Demo WMS) Ajustes */
+  .demo-container {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Slide 9 (Métricas e Conclusão) */
+  .metric-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .metric-value {
+    font-size: 30px !important;
+    min-width: auto !important;
+  }
+
+  .conclusion-banner {
+    min-height: 200px !important;
+  }
+
+  .banner-glass-card {
+    padding: 16px !important;
+  }
+
+  .banner-glass-card h3 {
+    font-size: 18px !important;
+  }
+
+  .banner-glass-card p {
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Rodapé / Menu Inferior */
+  .deck-controls {
+    height: 56px !important;
+    padding: 0 12px !important;
+  }
+
+  .nav-control-btn {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
   }
 
   .slide-dots {
-    display: none; /* Esconde os pontos para dar espaço aos botões se necessário */
+    gap: 4px !important;
+  }
+
+  .dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}
+
+/* Telas Muito Pequenas (iPhone SE / Dispositivos < 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 22px !important;
+  }
+
+  .nav-control-btn span {
+    display: none !important; /* Exibe apenas os ícones < e > nos botões */
+  }
+
+  .slide-dots {
+    display: none !important; /* Esconde pontos de navegação para poupar espaço */
   }
 }
