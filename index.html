@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação: Logística & WMS Nozama 1P</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra Superior de Controle -->
+  <header class="deck-header">
+    <div class="deck-brand">
+      <div class="logo-dot"></div>
+      <span>NOZAMA CORP // EXECUTIVE PITCH DECK</span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="deck-meta">
+      <span id="slide-number-top">01 / 09</span>
+    </div>
+  </header>
+
+  <!-- Palco da Apresentação -->
+  <main class="deck-stage">
+
+    <!-- SLIDE 1: CAPA -->
+    <!-- SLIDE 1: CAPA REFORMULADA -->
+    <section class="slide active" id="slide-1">
+      <div class="slide-bg-glow"></div>
+      
+      <div class="cover-grid">
+        <div class="cover-text">
+          <div class="tag-pill">⚡ ESTUDO DE CASO EXECUTIVO // CADEIA DE SUPRIMENTOS 1P</div>
+          
+          <h1 class="hero-title">
+            nozama<span class="dot-accent">.</span><br>
+            tudo de <span class="gradient-text">Z a A</span><br>
+            para você!
+          </h1>
+          
+          <p class="hero-subtitle">
+            Do clique no checkout à entrega na sua porta: conheça a engenharia logística, os algoritmos de WMS e a infraestrutura que movimentam o maior e-commerce First-Party.
+          </p>
+
+          <div class="cover-cta">
+            <button class="btn btn-hero" onclick="nextSlide()">
+              <span>Iniciar Apresentação</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <span class="key-hint">Navegue com <strong>←</strong> <strong>→</strong></span>
+          </div>
+        </div>
+
+        <div class="cover-visual">
+          <div class="image-frame">
+            <img src="./Gemini_Generated_Image_w1k0mjw1k0mjw1k0.jpg" alt="Galpão Tecnológico Nozama" />
+            
+            <!-- Card de Destaque 1 -->
+            <div class="glass-overlay-card top-badge">
+              <div class="overlay-stat">
+                <span class="stat-number">⚡ SLA < 24h</span>
+                <span class="stat-label">Malha de Entrega Expressa</span>
+              </div>
+            </div>
+
+            <!-- Card de Destaque 2 -->
+            <div class="glass-overlay-card bottom-badge">
+              <div class="overlay-stat">
+                <span class="stat-number">100% 1P</span>
+                <span class="stat-label">Controle End-to-End da Operação</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: INTRODUÇÃO À NOZAMA -->
+    <section class="slide" id="slide-2">
+      <div class="slide-header">
+        <span class="section-tag">01. Visão Geral da Empresa</span>
+        <h2>O que é a Nozama e o Modelo 1P?</h2>
+        <p class="section-sub">Diferenciando a operação direta de venda do modelo tradicional de marketplace.</p>
+      </div>
+
+      <div class="two-col-grid">
+        <div class="text-block">
+          <div class="info-box accent">
+            <div class="box-badge">Modelo 1P (First-Party)</div>
+            <h3>Compra Direta do Fabricante</h3>
+            <p>A Nozama adquire os produtos das marcas em grande escala, torna-se proprietária do estoque e assume a responsabilidade total por venda, emissão de NF-e, expedição e pós-venda.</p>
+          </div>
+
+          <div class="info-box">
+            <div class="box-badge alt">Infraestrutura</div>
+            <h3>Malha Logística Própria</h3>
+            <p>Operação ancorada em Centros de Distribuição estratégicos equipados com automação robótica e integração nativa com transportadoras de Last Mile.</p>
+          </div>
+        </div>
+
+        <div class="image-card-full">
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80" alt="Operação do Armazém">
+          <div class="badge-float">⚡ SLA: Entrega no Mesmo Dia (Same-Day)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: GESTÃO DE ESTOQUE -->
+    <section class="slide" id="slide-3">
+      <div class="slide-header">
+        <span class="section-tag">02. Operação Interna</span>
+        <h2>Como Funciona a Gestão de Estoque?</h2>
+        <p class="section-sub">Quatro pilares tecnológicos que garantem acurácia em escala milionária.</p>
+      </div>
+
+      <div class="four-cards-grid">
+        <div class="feature-card">
+          <div class="icon-wrap">💻</div>
+          <h4>WMS em Tempo Real</h4>
+          <p>Cada entrada ou transferência de item é registrada instantaneamente por leitura RF, eliminando contagens manuais.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrap">📦</div>
+          <h4>Armazenamento Caótico</h4>
+          <p>Produtos são estocados no primeiro espaço vago detectado pelo sistema, maximizando a densidade do galpão.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrap">🔄</div>
+          <h4>Onda de Picking</h4>
+          <p>Algoritmos agrupam múltiplos pedidos em uma única rota inteligente para otimizar os passos do operador.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon-wrap">⚖️</div>
+          <h4>Conferência Por Peso</h4>
+          <p>Balanças automatizadas na esteira validam o peso exato do pacote em gramas antes da expedição para barrar erros.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: DIFERENCIAIS DE ESTOQUE -->
+    <section class="slide" id="slide-4">
+      <div class="slide-header">
+        <span class="section-tag">03. Análise Comparativa</span>
+        <h2>O que Torna este Estoque Diferente?</h2>
+        <p class="section-sub">Comparação entre o e-commerce 1P de alto giro e o varejo físico tradicional.</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comp-card highlight">
+          <div class="comp-header">
+            <span class="pill-badge primary">Nozama E-Commerce 1P</span>
+            <h3>Estoque Fracionado & Dinâmico</h3>
+          </div>
+          <ul class="spaced-list">
+            <li><strong>Cauda Longa (Long Tail):</strong> Milhares de SKUs ativos com demanda pulverizada.</li>
+            <li><strong>Giro Extremo:</strong> Mercadorias permanecem poucas horas armazenadas no CD.</li>
+            <li><strong>Separação Unitária:</strong> Coleta individual de itens (B2C) com alta variedade.</li>
+            <li><strong>Endereçamento Variável:</strong> Posição física flexível gerida por software.</li>
+          </ul>
+        </div>
+
+        <div class="comp-card">
+          <div class="comp-header">
+            <span class="pill-badge muted">Varejo Físico Tradicional</span>
+            <h3>Estoque Padronizado & Fixo</h3>
+          </div>
+          <ul class="spaced-list">
+            <li><strong>SKUs Limitados:</strong> Restrito ao espaço físico de exposição nas prateleiras da loja.</li>
+            <li><strong>Giro Cadenciado:</strong> Reposições estruturadas em ciclos semanais ou mensais.</li>
+            <li><strong>Movimentação em Lote:</strong> Foco no transporte de caixas fechadas e paletes (B2B).</li>
+            <li><strong>Localização Rígida:</strong> Corredores e gôndolas fixas por marca e categoria.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: DESAFIOS OPERACIONAIS -->
+    <section class="slide" id="slide-5">
+      <div class="slide-header">
+        <span class="section-tag">04. Riscos & Complexidade</span>
+        <h2>Quais são os Maiores Desafios da Operação?</h2>
+        <p class="section-sub">Gargalos críticos que demandam alta tecnologia e planejamento preditivo.</p>
+      </div>
+
+      <div class="intro-grid">
+        <div class="slide-card">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=600&q=80" alt="Black Friday Peak Season">
+            <span class="step-badge alert">Desafio 01</span>
+          </div>
+          <div class="card-body">
+            <h3>Sazonalidade Extrema</h3>
+            <p>Picos massivos de vendas na Black Friday exigem escalar a capacidade de processamento sem comprometer a acurácia.</p>
+          </div>
+        </div>
+
+        <div class="slide-card">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=600&q=80" alt="Efeito Chicote na Cadeia">
+            <span class="step-badge alert">Desafio 02</span>
+          </div>
+          <div class="card-body">
+            <h3>Efeito Chicote (Bullwhip)</h3>
+            <p>Pequenas flutuações na demanda do consumidor geram grande distorção nos pedidos enviados à fábrica.</p>
+          </div>
+        </div>
+
+        <div class="slide-card">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=600&q=80" alt="Logística Reversa">
+            <span class="step-badge alert">Desafio 03</span>
+          </div>
+          <div class="card-body">
+            <h3>Logística Reversa Massiva</h3>
+            <p>Processamento ágil de trocas e devoluções para reintroduzir os produtos ao estoque sem perdas operacionais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: RELAÇÃO COM FORNECEDORES E OPERAÇÃO INTERNACIONAL -->
+    <section class="slide" id="slide-6">
+      <div class="slide-header">
+        <span class="section-tag">05. Cadeia Global</span>
+        <h2>Fornecedores & Operações Internacionais</h2>
+        <p class="section-sub">Estratégias de abastecimento global e integração direta com fabricantes.</p>
+      </div>
+
+      <div class="two-col-grid">
+        <div class="info-cards-stack">
+          <div class="info-box horizontal">
+            <div class="box-icon">🌐</div>
+            <div class="box-content">
+              <h3>Cross-Border E-Commerce</h3>
+              <p>Importação direta de itens globais sincronizada com lead times estendidos de 15 a 45 dias.</p>
+            </div>
+          </div>
+
+          <div class="info-box horizontal">
+            <div class="box-icon">🤝</div>
+            <div class="box-content">
+              <h3>VMI (Vendor Managed Inventory)</h3>
+              <p>Fornecedores parceiros monitoram nossos níveis de estoque e repõem itens automaticamente.</p>
+            </div>
+          </div>
+
+          <div class="info-box horizontal">
+            <div class="box-icon">🛃</div>
+            <div class="box-content">
+              <h3>Desembaraço Aduaneiro Ágil</h3>
+              <p>Pré-homologação de tributos e dados fiscais para evitar retenção de cargas nos portos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="image-card-full">
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Container Transport Logitics">
+          <div class="badge-float">Sincronização de Cadeia Global</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: CONCEITOS ACADÊMICOS APLICADOS -->
+    <section class="slide" id="slide-7">
+      <div class="slide-header center">
+        <span class="section-tag">06. Teoria & Prática</span>
+        <h2>Conceitos Acadêmicos Fundamentais</h2>
+        <p class="section-sub">A teoria de gestão de logística aplicada diariamente no ecossistema Nozama.</p>
+      </div>
+
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="c-number">01</span>
+            <h4>Curva ABC (Pareto)</h4>
+          </div>
+          <p>Priorização de estoque: <strong>Itens A</strong> (alta movimentação) ficam próximos às docas de saída, enquanto <strong>Itens C</strong> ocupam posições superiores.</p>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="c-number">02</span>
+            <h4>Giro de Estoque (Turnover)</h4>
+          </div>
+          <p>Métrica de liquidez: mede quantas vezes o estoque é renovado. Quanto maior o giro, menor o capital parado no balanço financeiro.</p>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="c-number">03</span>
+            <h4>Ponto de Pedido & Safety Stock</h4>
+          </div>
+          <p>Recompras automatizadas por algoritmo assim que o saldo atinge o limite do tempo de ressuprimento + margem de segurança.</p>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="c-number">04</span>
+            <h4>Cross-Docking</h4>
+          </div>
+          <p>Transferência direta entre a doca de recebimento e a de expedição sem estocagem intermediária nas prateleiras do galpão.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: DEMONSTRAÇÃO INTERATIVA -->
+    <section class="slide" id="slide-8">
+      <div class="demo-container">
+        <!-- LADO ESQUERDO: CLIENTE -->
+        <div class="left-panel">
+          <div class="panel-header">
+            <span class="panel-tag tag-client">E-Commerce Nozama Store</span>
+            <h3>Checkout de Pedido 1P</h3>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">📱</div>
+            <div class="product-info">
+              <h4>Smartphone Nozama Pro Max 256GB</h4>
+              <p class="price">R$ 4.299,00</p>
+              <p class="stock">Disponível no Galpão CD-SP1</p>
+            </div>
+            
+            <form id="purchase-form" class="purchase-form">
+              <div class="form-group">
+                <label for="cust-name">Nome do Comprador:</label>
+                <input type="text" id="cust-name" value="Lucas Silva" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="cust-city">Destino da Entrega:</label>
+                <select id="cust-city">
+                  <option value="São Paulo/SP">São Paulo / SP</option>
+                  <option value="Campinas/SP">Campinas / SP</option>
+                  <option value="Curitiba/PR">Curitiba / PR</option>
+                  <option value="Belo Horizonte/MG">Belo Horizonte / MG</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-buy">🛍️ Confirmar Compra 1P</button>
+            </form>
+
+            <div id="client-feedback" class="client-feedback hidden">
+              ✅ Pedido Aprovado! Acompanhe o WMS ao lado.
+            </div>
+          </div>
+        </div>
+
+        <!-- LADO DIREITO: OPERAÇÃO WMS -->
+        <div class="right-panel">
+          <div class="panel-header">
+            <span class="panel-tag tag-wms">Painel WMS Nozama</span>
+            <h3>Fulfillment & Esteira Operacional</h3>
+          </div>
+
+          <div id="no-order-placeholder" class="placeholder-box">
+            <div class="pulse-icon">👈</div>
+            <p>Clique em "Confirmar Compra 1P" para ver o fluxo de estoque rodar na esteira logistica em tempo real...</p>
+          </div>
+
+          <div id="active-logistics-box" class="active-logistics hidden">
+            <!-- Resumo -->
+            <div class="order-summary-bar">
+              <div><small>Pedido:</small> <strong id="display-order-id">-</strong></div>
+              <div><small>Cliente:</small> <span id="display-cust-name">-</span></div>
+              <div><small>Destino:</small> <span id="display-cust-city">-</span></div>
+              <div><small>Posição WMS:</small> <span id="display-wms-loc">Rua 02 - M01 - NV3</span></div>
+            </div>
+
+            <!-- Stepper -->
+            <div class="stepper-wrapper">
+              <div class="stepper" id="stepper-list"></div>
+            </div>
+
+            <!-- Card de Ação -->
+            <div class="current-step-card">
+              <div class="step-card-header">
+                <span id="current-step-badge" class="step-number">Etapa 1/8</span>
+                <h4 id="current-step-title">OMS & Antifraude</h4>
+              </div>
+              <p id="current-step-desc">Validação de crédito e entrada do pedido no sistema do armazém.</p>
+              
+              <button id="advance-step-btn" class="btn btn-advance" onclick="advanceStep()">
+                Avançar para Próxima Etapa →
+              </button>
+            </div>
+
+            <!-- Logs -->
+            <div class="log-terminal" id="demo-log-terminal">
+              <div class="log-line">[SYSTEM]: Aguardando eventos do pedido...</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: CONCLUSÃO -->
+    <section class="slide" id="slide-9">
+      <div class="slide-header center">
+        <span class="section-tag">07. Conclusão & Impacto</span>
+        <h2>A Força de uma Logística Integrada</h2>
+        <p class="section-sub">Resultados alcançados com o controle total do ecossistema 1P.</p>
+      </div>
+
+      <div class="conclusion-grid">
+        <div class="metrics-column">
+          <div class="metric-card">
+            <div class="metric-value gradient-text">100%</div>
+            <div class="metric-info">
+              <h4>Visibilidade E2E</h4>
+              <p>Rastreamento contínuo desde o checkout até o comprovante de entrega digital.</p>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-value gradient-text">-40%</div>
+            <div class="metric-info">
+              <h4>Tempo de Ciclo (Lead Time)</h4>
+              <p>Redução no tempo entre a aprovação do pedido e o despacho na doca do CD.</p>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-value gradient-text">99.8%</div>
+            <div class="metric-info">
+              <h4>Acurácia do Inventário</h4>
+              <p>Mínima taxa de divergência com conferência por balança volumétrica e RFID.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="banner-column">
+          <div class="conclusion-banner">
+            <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1000&q=80" alt="Centro de Operações Nozama" />
+            <div class="banner-glass-card">
+              <h3>Sessão de Perguntas</h3>
+              <p>Obrigado pela atenção! Abrimos o espaço para considerações do professor e da turma.</p>
+              <div class="qa-badge">💬 Espaço aberto para Debate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé de Controle dos Slides -->
+  <footer class="deck-controls">
+    <button class="nav-control-btn" onclick="prevSlide()" id="btn-prev">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>Slide Anterior</span>
+    </button>
+
+    <div class="slide-dots" id="dots-container"></div>
+
+    <button class="nav-control-btn" onclick="nextSlide()" id="btn-next">
+      <span>Próximo Slide</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
