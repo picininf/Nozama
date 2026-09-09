@@ -1383,12 +1383,35 @@ body {
    RESPONSIVIDADE MOBILE OTIMIZADA (SUBSTITUA SEU MEDIA QUERY ANTIGO)
    ============================================================ */
 
+/* ============================================================
+   CORREÇÃO DEFINITIVA PARA CELULAR (SEM ROLAGEM LATERAL + BOTÕES FIXOS)
+   ============================================================ */
+
+/* 1. Trava global para NUNCA rolar para os lados em nenhuma tela */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
 @media (max-width: 768px) {
-  /* Fix de Altura do Navegador Mobile */
   body {
     height: 100dvh !important;
+    position: relative !important;
   }
 
+  /* Força absolutamente todos os elementos a respeitarem a largura da tela */
+  * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Desativa a luz de fundo que estava estourando a tela para a direita */
+  .slide-bg-glow {
+    display: none !important;
+  }
+
+  /* Topo (Header) */
   .deck-header {
     height: 48px !important;
     padding: 0 12px !important;
@@ -1403,20 +1426,22 @@ body {
     font-size: 11px !important;
   }
 
-  /* Palco dos Slides com Rolagem Touch Suave */
+  /* Palco dos Slides */
   .deck-stage {
-    height: calc(100dvh - 104px) !important; /* Altura exata descontando Header + Footer */
+    height: calc(100dvh - 48px - 60px) !important; /* Altura total descontando Header e Footer */
+    width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .slide {
-    padding: 16px 16px 40px 16px !important;
+    padding: 16px 16px 20px 16px !important;
     justify-content: flex-start !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
+    overflow-y: auto !important; /* Rolagem apenas vertical se o conteúdo for grande */
+    overflow-x: hidden !important;
     height: 100% !important;
   }
 
-  /* Forçar TODAS as Grids para 1 Coluna Única */
+  /* Transformar Grids em 1 Coluna Única Perfeita */
   .cover-grid,
   .two-col-grid,
   .four-cards-grid,
@@ -1425,16 +1450,16 @@ body {
   .concepts-grid,
   .demo-container,
   .conclusion-grid {
-    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 16px !important;
     width: 100% !important;
-    max-width: 100% !important;
   }
 
-  /* Redimensionamento Agressivo da Tipografia */
+  /* Ajustes dos Textos */
   .hero-title {
     font-size: 26px !important;
-    line-height: 1.15 !important;
+    line-height: 1.2 !important;
     letter-spacing: -0.5px !important;
     margin-bottom: 12px !important;
   }
@@ -1452,16 +1477,14 @@ body {
   .hero-subtitle {
     font-size: 13px !important;
     line-height: 1.5 !important;
-    margin-bottom: 16px !important;
   }
 
   .tag-pill, .section-tag {
     font-size: 10px !important;
     padding: 4px 10px !important;
-    margin-bottom: 10px !important;
   }
 
-  /* Controle de Altura de Imagens no Celular */
+  /* Imagens ajustadas */
   .image-frame img,
   .image-card-full,
   .card-image-wrap,
@@ -1471,7 +1494,7 @@ body {
     object-fit: cover !important;
   }
 
-  /* Compactação dos Cards */
+  /* Compactação de Cards */
   .feature-card,
   .info-box,
   .comp-card,
@@ -1485,8 +1508,8 @@ body {
   }
 
   .icon-wrap, .box-icon {
-    width: 38px !important;
-    height: 38px !important;
+    width: 36px !important;
+    height: 36px !important;
     font-size: 18px !important;
     margin-bottom: 10px !important;
   }
@@ -1499,60 +1522,34 @@ body {
   }
 
   .key-hint {
-    display: none !important; /* Remove atalho de teclado no touch */
+    display: none !important;
   }
 
-  /* Badges de Imagem */
   .glass-overlay-card {
     padding: 6px 10px !important;
   }
-  .glass-overlay-card.top-badge { top: 8px !important; right: 8px !important; }
-  .glass-overlay-card.bottom-badge { bottom: 8px !important; left: 8px !important; }
 
-  /* Slide 8 (Demo WMS) Ajustes */
-  .demo-container {
-    height: auto !important;
-    max-height: none !important;
-  }
-
-  /* Slide 9 (Métricas e Conclusão) */
-  .metric-card {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-  }
-
-  .metric-value {
-    font-size: 30px !important;
-    min-width: auto !important;
-  }
-
-  .conclusion-banner {
-    min-height: 200px !important;
-  }
-
-  .banner-glass-card {
-    padding: 16px !important;
-  }
-
-  .banner-glass-card h3 {
-    font-size: 18px !important;
-  }
-
-  .banner-glass-card p {
-    font-size: 12px !important;
-    margin-bottom: 10px !important;
-  }
-
-  /* Rodapé / Menu Inferior */
+  /* 2. BOTÕES DE PASSAR PÁGINA FIXOS EMBAIXO DA TELA */
   .deck-controls {
-    height: 56px !important;
-    padding: 0 12px !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    z-index: 99999 !important;
+    background: #0b0f19 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
 
   .nav-control-btn {
-    padding: 8px 12px !important;
-    font-size: 12px !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    background: #1c273e !important;
   }
 
   .slide-dots {
@@ -1565,17 +1562,13 @@ body {
   }
 }
 
-/* Telas Muito Pequenas (iPhone SE / Dispositivos < 380px) */
+/* Telas com largura menor que 380px */
 @media (max-width: 380px) {
   .hero-title {
     font-size: 22px !important;
   }
 
-  .nav-control-btn span {
-    display: none !important; /* Exibe apenas os ícones < e > nos botões */
-  }
-
   .slide-dots {
-    display: none !important; /* Esconde pontos de navegação para poupar espaço */
+    display: none !important; /* Esconde os pontinhos para dar espaço total aos botões */
   }
 }
