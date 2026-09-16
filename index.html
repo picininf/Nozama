@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nozama Tech — Periféricos: Riscos, Soluções & Diferencial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   NOZAMA TECH - PITCH DECK STYLESHEET (periféricos PC/notebook)
+   ============================================================ */
+
+:root {
+  --bg-dark: #0a0e17;
+  --bg-surface: #121a2b;
+  --bg-card: #19233a;
+  --bg-glass: rgba(18, 26, 43, 0.86);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-glow: #22d3ee;
+
+  --text-main: #f5f8fc;
+  --text-sub: #b9c4d6;
+  --text-muted: #7d8aa3;
+
+  --primary: #22d3ee;
+  --primary-alt: #818cf8;
+  --primary-gradient: linear-gradient(135deg, #22d3ee 0%, #818cf8 100%);
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition-speed: 0.45s;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+
+body { background-color: var(--bg-dark); color: var(--text-main); height: 100vh; width: 100vw; overflow: hidden; display: flex; flex-direction: column; }
+
+.deck-header { height: 56px; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); background: rgba(10, 14, 23, 0.9); backdrop-filter: blur(12px); z-index: 50; flex-shrink: 0; }
+.deck-brand { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--text-muted); }
+.logo-dot { width: 9px; height: 9px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 12px var(--primary); }
+.progress-bar-container { flex: 1; max-width: 380px; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 4px; overflow: hidden; margin: 0 16px; }
+.progress-bar { height: 100%; width: 10%; background: var(--primary-gradient); transition: width 0.4s ease; }
+.deck-meta { font-size: 13px; font-weight: 700; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+
+.deck-stage { flex: 1; position: relative; width: 100%; overflow: hidden; }
+
+.slide { position: absolute; inset: 0; padding: 28px 60px; display: flex; flex-direction: column; justify-content: center; opacity: 0; visibility: hidden; transition: transform var(--transition-speed) cubic-bezier(0.16, 1, 0.3, 1), opacity var(--transition-speed) ease, visibility var(--transition-speed); transform: translateX(100px) scale(0.97); overflow-y: auto; overflow-x: hidden; }
+.slide::-webkit-scrollbar { width: 6px; }
+.slide::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+.slide.active { opacity: 1; visibility: visible; transform: translateX(0) scale(1); }
+.slide.exit-left { opacity: 0; visibility: hidden; transform: translateX(-100px) scale(0.97); }
+.slide.enter-left { transform: translateX(-100px) scale(0.97); }
+
+.gradient-text { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.tag-pill { display: inline-block; padding: 8px 18px; background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: 30px; color: var(--primary); font-size: 12px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 24px; }
+.section-tag { color: var(--primary); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: block; }
+.section-owner { color: var(--text-muted); font-weight: 600; text-transform: none; letter-spacing: 0; }
+.slide-header { margin-bottom: 36px; max-width: 920px; }
+.slide-header.center { text-align: center; margin-left: auto; margin-right: auto; max-width: 920px; }
+.slide-header h2 { font-size: 40px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; line-height: 1.15; }
+.slide-header .section-sub { font-size: 17px; color: var(--text-sub); line-height: 1.6; }
+
+/* SLIDE 1: CAPA */
+.slide-bg-glow { position: absolute; top: 10%; left: 0%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(129, 140, 248, 0.06) 50%, rgba(0, 0, 0, 0) 70%); pointer-events: none; z-index: 0; }
+.cover-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; max-width: 1320px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+.hero-title { font-size: 50px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1.5px; color: #ffffff; }
+.dot-accent { color: var(--primary); }
+.hero-subtitle { font-size: 17px; color: var(--text-sub); line-height: 1.75; margin-bottom: 32px; max-width: 560px; }
+.cover-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.mini-tag { font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 20px; background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-sub); }
+.cover-cta { display: flex; align-items: center; gap: 24px; }
+.btn-hero { background: var(--primary-gradient); color: #071019; font-weight: 800; padding: 18px 36px; border-radius: var(--radius-md); border: none; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 12px 32px rgba(34, 211, 238, 0.3); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.btn-hero:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(34, 211, 238, 0.45); }
+.key-hint { font-size: 14px; color: var(--text-muted); }
+.key-hint strong { background: rgba(255, 255, 255, 0.12); padding: 3px 8px; border-radius: 6px; color: white; }
+.image-frame { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7); }
+.image-frame img { width: 100%; height: 420px; object-fit: cover; display: block; }
+.glass-overlay-card { position: absolute; background: var(--bg-glass); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.18); padding: 14px 20px; border-radius: var(--radius-md); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
+.glass-overlay-card.top-badge { top: 20px; right: 20px; }
+.glass-overlay-card.bottom-badge { bottom: 20px; left: 20px; }
+.overlay-stat .stat-number { font-size: 18px; font-weight: 800; color: var(--primary); display: block; margin-bottom: 2px; }
+.overlay-stat .stat-label { font-size: 11px; font-weight: 600; color: var(--text-sub); }
+.team-strip { display: flex; gap: 18px; margin-top: 28px; flex-wrap: wrap; }
+.team-chip { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-sub); background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); padding: 6px 12px 6px 8px; border-radius: 30px; }
+.team-chip .avatar-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--primary-gradient); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #071019; }
+
+/* Grids & Cards reutilizados */
+.two-col-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; max-width: 1320px; margin: 0 auto; width: 100%; align-items: center; }
+.text-block { display: flex; flex-direction: column; gap: 22px; }
+.info-box { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 26px; border-radius: var(--radius-lg); }
+.info-box.accent { border-color: rgba(34, 211, 238, 0.4); background: linear-gradient(135deg, rgba(25, 35, 58, 0.6) 0%, rgba(18, 26, 43, 0.8) 100%); }
+.info-box.risk { border-color: rgba(248, 113, 113, 0.45); background: linear-gradient(135deg, rgba(50, 20, 24, 0.5) 0%, rgba(18, 26, 43, 0.8) 100%); }
+.box-badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: rgba(34, 211, 238, 0.15); color: var(--primary); margin-bottom: 12px; }
+.box-badge.alt { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+.box-badge.danger { background: rgba(248, 113, 113, 0.15); color: var(--danger); }
+.box-badge.violet { background: rgba(129, 140, 248, 0.15); color: var(--primary-alt); }
+.info-box h3 { font-size: 19px; margin-bottom: 8px; color: white; }
+.info-box p { font-size: 14.5px; color: var(--text-sub); line-height: 1.7; }
+.info-box ul.mini-list { margin-top: 10px; padding-left: 18px; color: var(--text-sub); font-size: 14px; line-height: 1.8; }
+.image-card-full { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); height: 400px; }
+.image-card-full img { width: 100%; height: 100%; object-fit: cover; }
+.badge-float { position: absolute; bottom: 18px; right: 18px; background: rgba(10, 14, 23, 0.9); backdrop-filter: blur(10px); padding: 9px 18px; border-radius: 30px; font-size: 12.5px; font-weight: 800; color: var(--success); border: 1px solid rgba(52, 211, 153, 0.4); }
+
+.four-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; max-width: 1320px; margin: 0 auto; width: 100%; }
+.feature-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 26px; border-radius: var(--radius-lg); transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+.feature-card:hover { transform: translateY(-4px); border-color: var(--border-glow); }
+.icon-wrap { font-size: 28px; background: var(--bg-card); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 14px; margin-bottom: 16px; border: 1px solid var(--border-color); }
+.feature-card h4 { font-size: 17.5px; margin-bottom: 8px; color: white; }
+.feature-card p { font-size: 13.5px; color: var(--text-sub); line-height: 1.65; }
+
+.five-cards-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; max-width: 1320px; margin: 0 auto; width: 100%; }
+
+.concepts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1250px; margin: 0 auto; width: 100%; }
+.concept-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 26px; border-radius: var(--radius-lg); }
+.concept-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.c-number { font-size: 12px; font-weight: 800; color: var(--primary); background: rgba(34, 211, 238, 0.15); padding: 6px 12px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; }
+.concept-card h4 { font-size: 17.5px; color: white; }
+.concept-card p { font-size: 13.5px; color: var(--text-sub); line-height: 1.7; }
+.concept-card p strong { color: #a5f3fc; }
+
+.intro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1320px; margin: 0 auto; width: 100%; }
+.slide-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
+.slide-card.risk-card { border-color: rgba(248, 113, 113, 0.3); }
+.card-image-wrap { position: relative; height: 150px; }
+.card-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.step-badge { position: absolute; top: 14px; right: 14px; background: rgba(10, 14, 23, 0.9); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; color: var(--primary); border: 1px solid var(--border-color); }
+.step-badge.alert { color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+.card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.card-body h3 { font-size: 17px; margin-bottom: 8px; color: white; }
+.card-body p { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
+.impact-stat { margin-top: auto; padding-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--primary); font-weight: 700; border-top: 1px dashed var(--border-color); margin-top: 14px; }
+.impact-stat.danger { color: var(--danger); }
+
+.formula-box { background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 20px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; color: #7dd3fc; line-height: 1.9; margin-top: 14px; }
+.formula-box .res { color: var(--primary); font-weight: 700; }
+.formula-box .res-danger { color: var(--danger); font-weight: 700; }
+.solution-card { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 26px; }
+.solution-card .box-badge { margin-bottom: 10px; }
+.solution-list { display: flex; flex-direction: column; gap: 18px; }
+.ref-line { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-muted); margin-top: 16px; }
+.ref-line::before { content: "📚"; }
+
+.risk-solution-pair { display: flex; flex-direction: column; gap: 10px; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px 18px; }
+.rsp-risk { font-size: 12.5px; color: var(--danger); font-weight: 700; display: flex; gap: 8px; align-items: flex-start; }
+.rsp-arrow { color: var(--text-muted); font-size: 12px; padding-left: 8px; }
+.rsp-solution { font-size: 13.5px; color: var(--text-sub); font-weight: 500; display: flex; gap: 8px; align-items: flex-start; }
+.rsp-solution strong { color: var(--success); }
+
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1320px; margin: 0 auto; width: 100%; }
+.comp-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 30px; border-radius: var(--radius-lg); }
+.comp-card.highlight { border-color: rgba(34, 211, 238, 0.4); background: linear-gradient(180deg, rgba(25, 35, 58, 0.4) 0%, rgba(18, 26, 43, 0.9) 100%); }
+.comp-header { margin-bottom: 20px; }
+.pill-badge { font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 6px 14px; border-radius: 6px; display: inline-block; margin-bottom: 10px; }
+.pill-badge.primary { background: rgba(34, 211, 238, 0.2); color: var(--primary); }
+.pill-badge.muted { background: rgba(255, 255, 255, 0.1); color: var(--text-muted); }
+.comp-card h3 { font-size: 20px; }
+.spaced-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.spaced-list li { font-size: 14px; color: var(--text-sub); line-height: 1.7; padding-left: 22px; position: relative; }
+.spaced-list li::before { content: "→"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+.metric-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 20px 24px; border-radius: var(--radius-lg); display: flex; align-items: center; gap: 22px; }
+.metric-value { font-size: 32px; font-weight: 800; min-width: 100px; color: var(--primary); font-family: 'JetBrains Mono', monospace; }
+.metric-info h4 { font-size: 15px; margin-bottom: 3px; color: white; }
+.metric-info p { font-size: 12.5px; color: var(--text-sub); line-height: 1.5; }
+
+/* SITUAÇÃO-PROBLEMA: TIMELINE */
+.timeline-wrap { max-width: 1250px; margin: 0 auto; width: 100%; }
+.timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; position: relative; margin-bottom: 22px; }
+.timeline::before { content: ""; position: absolute; top: 22px; left: 8%; right: 8%; height: 2px; background: linear-gradient(90deg, var(--border-color) 0%, rgba(248,113,113,0.5) 100%); z-index: 0; }
+.timeline-item { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; padding: 0 6px; }
+.timeline-num { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+.timeline-item:last-child .timeline-num { border-color: var(--danger); background: rgba(248,113,113,0.15); color: var(--danger); }
+.timeline-item h5 { font-size: 13px; color: white; font-weight: 700; line-height: 1.3; }
+.timeline-item p { font-size: 11.5px; color: var(--text-muted); line-height: 1.5; }
+.outcome-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+
+/* DIFFERENTIATOR */
+.diff-hero-card { background: linear-gradient(135deg, rgba(34,211,238,0.14) 0%, rgba(129,140,248,0.08) 100%); border: 1px solid rgba(34,211,238,0.4); border-radius: var(--radius-lg); padding: 26px 28px; display: flex; gap: 22px; align-items: flex-start; margin-bottom: 22px; }
+.diff-hero-icon { font-size: 34px; background: var(--bg-dark); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border-color); }
+
+/* SLIDE DEMO */
+.mode-toggle { display: flex; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 10px; padding: 4px; gap: 4px; }
+.mode-btn { flex: 1; padding: 9px 10px; border: none; background: transparent; color: var(--text-muted); font-size: 12px; font-weight: 800; border-radius: 7px; cursor: pointer; transition: all 0.2s ease; }
+.mode-btn.active-old { background: rgba(248, 113, 113, 0.18); color: #fca5a5; }
+.mode-btn.active-noz { background: rgba(34, 211, 238, 0.18); color: var(--primary); }
+.demo-container { display: grid; grid-template-columns: 380px 1fr; gap: 28px; width: 100%; max-width: 1320px; margin: 0 auto; height: 100%; max-height: 560px; }
+.left-panel, .right-panel { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; }
+.panel-header { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.panel-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 6px; }
+.tag-client { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+.tag-wms { background: rgba(34, 211, 238, 0.15); color: var(--primary); }
+.product-card { display: flex; flex-direction: column; gap: 14px; }
+.product-image { font-size: 40px; text-align: center; background: var(--bg-dark); padding: 12px; border-radius: 12px; border: 1px solid var(--border-color); }
+.product-info h4 { font-size: 14.5px; }
+.product-info .price { font-size: 19px; font-weight: 800; color: var(--success); margin: 2px 0; }
+.product-info .stock { font-size: 11.5px; color: var(--text-muted); }
+.purchase-form { display: flex; flex-direction: column; gap: 11px; }
+.form-group { display: flex; flex-direction: column; gap: 4px; }
+.form-group label { font-size: 11.5px; color: var(--text-sub); font-weight: 600; }
+.form-group input, .form-group select { padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-dark); color: white; font-size: 12.5px; }
+.btn-buy { background: var(--success); color: #06281c; padding: 12px; font-weight: 800; border: none; border-radius: 8px; cursor: pointer; margin-top: 4px; font-size: 12.5px; }
+.client-feedback { background: rgba(52, 211, 153, 0.15); border: 1px solid var(--success); color: #6ee7b7; padding: 10px; border-radius: 8px; font-size: 11.5px; text-align: center; }
+.hidden { display: none !important; }
+.placeholder-box { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--text-muted); border: 2px dashed var(--border-color); border-radius: 12px; padding: 22px; }
+.pulse-icon { font-size: 30px; margin-bottom: 8px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-8px); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.active-logistics { display: flex; flex-direction: column; gap: 12px; height: 100%; overflow-y: auto; }
+.order-summary-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; background: var(--bg-dark); padding: 11px; border-radius: 8px; font-size: 11.5px; border: 1px solid var(--border-color); }
+.stepper-wrapper { overflow-x: auto; padding-bottom: 4px; }
+.stepper { display: flex; gap: 6px; }
+.step-item { width: 27px; height: 27px; border-radius: 50%; background: var(--bg-dark); border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: var(--text-muted); flex-shrink: 0; }
+.step-item.active { border-color: var(--primary); background: var(--primary); color: #071019; }
+.step-item.completed { border-color: var(--success); background: var(--success); color: #06281c; }
+.current-step-card { background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; }
+.step-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.step-number { background: var(--primary); color: #071019; font-size: 10.5px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+.current-step-card h4 { font-size: 14px; color: white; }
+.current-step-card p { font-size: 12px; color: var(--text-sub); margin-bottom: 10px; line-height: 1.5; }
+.btn-advance { width: 100%; background: var(--primary); color: #071019; padding: 11px; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
+.cancel-scenario-box { background: rgba(248, 113, 113, 0.08); border: 1px dashed rgba(248, 113, 113, 0.4); border-radius: 10px; padding: 13px; display: flex; flex-direction: column; gap: 10px; }
+.cancel-scenario-box h5 { font-size: 12.5px; color: #fca5a5; font-weight: 800; }
+.cancel-scenario-box p { font-size: 11.5px; color: var(--text-sub); line-height: 1.5; }
+.btn-row { display: flex; gap: 8px; }
+.btn-small { flex: 1; padding: 9px; border: none; border-radius: 7px; font-size: 11px; font-weight: 800; cursor: pointer; }
+.btn-continue { background: var(--success); color: #06281c; }
+.btn-cancel { background: var(--danger); color: #2b0808; }
+.outcome-box { border-radius: 10px; padding: 13px; font-size: 12px; line-height: 1.6; border: 1px solid; }
+.outcome-box.bad { background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.4); color: #fca5a5; }
+.outcome-box.good { background: rgba(52, 211, 153, 0.1); border-color: rgba(52, 211, 153, 0.4); color: #6ee7b7; }
+.outcome-box strong { display: block; margin-bottom: 4px; font-size: 12.5px; }
+.log-terminal { background: #05070c; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; height: 84px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #67e8f9; display: flex; flex-direction: column; gap: 4px; }
+
+/* SLIDE FINAL */
+.banner-column { max-width: 1100px; margin: 0 auto; width: 100%; }
+.conclusion-banner { position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); height: 100%; min-height: 420px; }
+.conclusion-banner img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.banner-glass-card { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 14, 23, 0.25) 0%, rgba(10, 14, 23, 0.96) 100%); padding: 40px; display: flex; flex-direction: column; justify-content: flex-end; }
+.banner-glass-card h3 { font-size: 28px; font-weight: 800; margin-bottom: 10px; color: white; }
+.banner-glass-card p { font-size: 15px; color: var(--text-sub); margin-bottom: 18px; line-height: 1.6; max-width: 660px; }
+.recap-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.recap-chip { font-size: 11.5px; font-weight: 700; padding: 6px 12px; border-radius: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--text-sub); }
+.qa-badge { display: inline-block; background: var(--primary-gradient); color: #071019; font-weight: 800; padding: 10px 20px; border-radius: 30px; font-size: 13px; width: fit-content; }
+
+.deck-controls { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; border-top: 1px solid var(--border-color); background: var(--bg-dark); flex-shrink: 0; z-index: 100; }
+.nav-control-btn { background: var(--bg-surface); border: 1px solid var(--border-color); color: white; padding: 10px 22px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: background 0.2s, border-color 0.2s; }
+.nav-control-btn:hover { background: var(--bg-card); border-color: rgba(255, 255, 255, 0.25); }
+.slide-dots { display: flex; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); cursor: pointer; transition: background 0.3s, transform 0.3s; }
+.dot.active { background: var(--primary); transform: scale(1.25); box-shadow: 0 0 10px var(--primary); }
+
+/* NOTEBOOKS (telas largas porém baixas, ex: 1366x768, 1440x900) */
+@media (max-height: 800px) and (min-width: 1025px) {
+  .slide { padding: 18px 56px; }
+  .slide-header { margin-bottom: 16px; }
+  .slide-header h2 { font-size: 28px; margin-bottom: 6px; }
+  .slide-header .section-sub { font-size: 14px; }
+  .hero-title { font-size: 36px; margin-bottom: 12px; }
+  .hero-subtitle { font-size: 14px; margin-bottom: 16px; }
+  .cover-tags { margin-bottom: 16px; }
+  .image-frame img { height: 250px; }
+  .image-card-full { height: 250px; }
+  .card-image-wrap { height: 110px; }
+  .two-col-grid, .comparison-grid { gap: 26px; }
+  .info-box, .comp-card, .solution-card, .concept-card, .feature-card { padding: 16px; }
+  .info-box h3, .concept-card h4 { font-size: 15.5px; margin-bottom: 6px; }
+  .info-box p, .concept-card p, .card-body p { font-size: 12.5px; line-height: 1.5; }
+  .text-block { gap: 12px; }
+  .demo-container { max-height: none; }
+  .formula-box { padding: 11px 15px; font-size: 12px; line-height: 1.55; }
+  .concepts-grid { gap: 14px; }
+  .intro-grid { gap: 16px; }
+  .card-body { padding: 15px; }
+  .conclusion-banner { min-height: 290px; }
+  .timeline-num { width: 36px; height: 36px; font-size: 14px; }
+  .timeline::before { top: 18px; }
+}
+
+@media (max-width: 1366px) and (min-width: 1025px) {
+  .cover-grid, .two-col-grid { gap: 40px; }
+  .five-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1024px) {
+  .slide { padding: 30px 40px; }
+  .cover-grid, .two-col-grid, .comparison-grid, .intro-grid, .concepts-grid, .four-cards-grid, .five-cards-grid, .timeline, .outcome-strip { grid-template-columns: 1fr; gap: 20px; }
+  .timeline::before { display: none; }
+  .hero-title { font-size: 38px; }
+  .slide-header h2 { font-size: 28px; }
+  .demo-container { grid-template-columns: 1fr; max-height: none; }
+}
+
+html, body { overflow-x: hidden !important; max-width: 100% !important; width: 100% !important; }
+
+@media (max-width: 768px) {
+  body { height: 100dvh !important; position: relative !important; }
+  * { max-width: 100% !important; box-sizing: border-box !important; }
+  .slide-bg-glow { display: none !important; }
+  .deck-header { height: 48px !important; padding: 0 12px !important; }
+  .progress-bar-container { max-width: 80px !important; margin: 0 8px !important; }
+  .deck-brand, .deck-meta { font-size: 10.5px !important; }
+  .deck-stage { height: calc(100dvh - 48px - 60px) !important; width: 100% !important; overflow-x: hidden !important; }
+  .slide { padding: 16px 16px 20px 16px !important; justify-content: flex-start !important; overflow-y: auto !important; overflow-x: hidden !important; height: 100% !important; }
+  .cover-grid, .two-col-grid, .four-cards-grid, .five-cards-grid, .comparison-grid, .intro-grid, .concepts-grid, .demo-container, .timeline, .outcome-strip { display: flex !important; flex-direction: column !important; gap: 14px !important; width: 100% !important; }
+  .hero-title { font-size: 25px !important; line-height: 1.2 !important; letter-spacing: -0.5px !important; margin-bottom: 12px !important; }
+  .slide-header { margin-bottom: 14px !important; }
+  .slide-header h2 { font-size: 21px !important; line-height: 1.2 !important; }
+  .slide-header .section-sub, .hero-subtitle { font-size: 12.5px !important; line-height: 1.5 !important; }
+  .tag-pill, .section-tag { font-size: 10px !important; padding: 4px 10px !important; }
+  .image-frame img, .image-card-full, .card-image-wrap, .image-card-full img { height: 170px !important; width: 100% !important; object-fit: cover !important; }
+  .feature-card, .info-box, .comp-card, .card-body, .concept-card, .metric-card, .left-panel, .right-panel, .solution-card, .diff-hero-card { padding: 14px !important; border-radius: 12px !important; }
+  .icon-wrap, .diff-hero-icon { width: 36px !important; height: 36px !important; font-size: 18px !important; margin-bottom: 10px !important; }
+  .btn-hero { width: 100% !important; justify-content: center !important; padding: 12px 16px !important; font-size: 13.5px !important; }
+  .key-hint { display: none !important; }
+  .glass-overlay-card { padding: 6px 10px !important; }
+  .timeline-item { flex-direction: row !important; text-align: left !important; }
+  .deck-controls { position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; height: 60px !important; z-index: 99999 !important; background: #0a0e17 !important; border-top: 1px solid rgba(255, 255, 255, 0.15) !important; padding: 0 16px !important; display: flex !important; align-items: center !important; justify-content: space-between !important; }
+  .nav-control-btn { padding: 10px 16px !important; font-size: 12.5px !important; background: #19233a !important; }
+  .slide-dots { gap: 4px !important; }
+  .dot { width: 6px !important; height: 6px !important; }
+}
+
+@media (max-width: 380px) {
+  .hero-title { font-size: 21px !important; }
+  .slide-dots { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="deck-header">
+  <div class="deck-brand">
+    <div class="logo-dot"></div>
+    <span>NOZAMA TECH // TRABALHO ACADÊMICO</span>
+  </div>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <div class="deck-meta">
+    <span id="slide-number-top">01 / 10</span>
+  </div>
+</header>
+
+<main class="deck-stage">
+
+  <!-- SLIDE 1: CAPA -->
+  <section class="slide active" id="slide-1">
+    <div class="slide-bg-glow"></div>
+    <div class="cover-grid">
+      <div class="cover-text">
+        <span class="tag-pill">Trabalho Acadêmico · Logística Aplicada ao E-commerce</span>
+        <h1 class="hero-title">
+          nozama tech<span class="dot-accent">.</span><br>
+          periféricos que<br>
+          chegam no <span class="gradient-text">seu ritmo</span>.
+        </h1>
+        <p class="hero-subtitle">Mudamos de rota: saímos de um e-commerce generalista e viramos uma operação 1P especializada em periféricos de PC e notebook. Aqui mostramos o que vendemos, os riscos reais desse setor e como resolvemos cada um deles.</p>
+        <div class="cover-tags">
+          <span class="mini-tag">🏢 Introdução</span>
+          <span class="mini-tag">🖱️ O que Vendemos</span>
+          <span class="mini-tag">⚠️ Riscos do Setor</span>
+          <span class="mini-tag">✅ Soluções</span>
+          <span class="mini-tag">🚚 Situação-Problema</span>
+          <span class="mini-tag">🎮 Demonstração</span>
+          <span class="mini-tag">✨ Diferencial</span>
+        </div>
+        <div class="cover-cta">
+          <button class="btn btn-hero" onclick="nextSlide()">
+            <span>Iniciar Apresentação</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <span class="key-hint">Navegue com <strong>←</strong> <strong>→</strong></span>
+        </div>
+        <div class="team-strip">
+          <div class="team-chip"><span class="avatar-dot">L</span> Leandro — Introdução, Vendas & Conclusão</div>
+          <div class="team-chip"><span class="avatar-dot">F</span> Filipe — Riscos & Soluções</div>
+          <div class="team-chip"><span class="avatar-dot">A</span> Arthur — Aprendizado</div>
+        </div>
+      </div>
+      <div class="cover-visual">
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=900&q=80" alt="Setup gamer com teclado mecânico e mouse">
+          <div class="glass-overlay-card top-badge">
+            <div class="overlay-stat">
+              <span class="stat-number">100% Periféricos</span>
+              <span class="stat-label">foco de catálogo</span>
+            </div>
+          </div>
+          <div class="glass-overlay-card bottom-badge">
+            <div class="overlay-stat">
+              <span class="stat-number">Modelo 1P</span>
+              <span class="stat-label">estoque e entrega próprios</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: INTRODUÇÃO -->
+  <section class="slide" id="slide-2">
+    <div class="slide-header">
+      <span class="section-tag">01 · Introdução <span class="section-owner">— Leandro</span></span>
+      <h2>Quem é a Nozama Tech?</h2>
+      <p class="section-sub">Nascemos como um e-commerce generalista, mas identificamos que competir com tudo, ao mesmo tempo, nos deixava sem identidade. Escolhemos um nicho para dominar de verdade.</p>
+    </div>
+    <div class="two-col-grid">
+      <div class="text-block">
+        <div class="info-box accent">
+          <div class="box-badge">O Pivô</div>
+          <h3>De generalista a especialista em periféricos</h3>
+          <p>Redesenhamos a operação inteira em torno de um público só: quem monta, atualiza ou equipa um setup de PC e notebook — gamers, criadores de conteúdo, estudantes e profissionais de home office.</p>
+        </div>
+        <div class="info-box">
+          <div class="box-badge alt">Modelo 1P</div>
+          <h3>Compramos, estocamos e entregamos</h3>
+          <p>Somos vendedores diretos (First-Party): compramos dos fabricantes em escala, viramos donos do estoque e respondemos por toda a venda — nota fiscal, expedição e pós-venda.</p>
+        </div>
+        <div class="info-box">
+          <div class="box-badge">Por que Periféricos?</div>
+          <ul class="mini-list">
+            <li>Alto giro e recorrência: sempre tem algo novo a comprar no setup</li>
+            <li>Ticket médio saudável para sustentar operação logística própria</li>
+            <li>Mercado com dor real de compatibilidade e confiança que dá pra resolver</li>
+          </ul>
+        </div>
+      </div>
+      <div class="image-card-full">
+        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80" alt="Centro de distribuição com produtos de tecnologia">
+        <div class="badge-float">🎯 Foco: Periféricos de PC & Notebook</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: O QUE VENDEMOS -->
+  <section class="slide" id="slide-3">
+    <div class="slide-header">
+      <span class="section-tag">02 · O que Vendemos <span class="section-owner">— Leandro</span></span>
+      <h2>Nosso catálogo: o essencial de qualquer setup</h2>
+      <p class="section-sub">Cinco categorias organizam tudo o que vendemos — do primeiro clique à última entrega.</p>
+    </div>
+    <div class="five-cards-grid">
+      <div class="feature-card">
+        <div class="icon-wrap">⌨️</div>
+        <h4>Entrada</h4>
+        <p>Teclados mecânicos e membrana, mouses gamer e de produtividade, mousepads.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">🎧</div>
+        <h4>Áudio</h4>
+        <p>Headsets, fones com fio e sem fio, microfones para streaming e chamadas.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">📷</div>
+        <h4>Imagem & Vídeo</h4>
+        <p>Webcams, placas de captura e monitores para quem joga, estuda ou transmite.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">🪑</div>
+        <h4>Ergonomia & Setup</h4>
+        <p>Cadeiras, suportes de monitor, iluminação de ambiente e organização de mesa.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">🔌</div>
+        <h4>Conectividade</h4>
+        <p>Hubs USB, cabos, adaptadores e docks para notebook.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: RISCOS COMUNS NO SETOR -->
+  <section class="slide" id="slide-4">
+    <div class="slide-header">
+      <span class="section-tag">03 · Riscos do Setor <span class="section-owner">— Filipe</span></span>
+      <h2>Os riscos que testam qualquer operação de periféricos</h2>
+      <p class="section-sub">Mapeamos os riscos que aparecem antes, durante e depois da venda — de estoque a reembolso.</p>
+    </div>
+    <div class="intro-grid">
+      <div class="slide-card risk-card">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&w=600&q=80" alt="Devolução de produto eletrônico">
+          <span class="step-badge alert">Risco 01</span>
+        </div>
+        <div class="card-body">
+          <h3>Devolução por incompatibilidade</h3>
+          <p>Periférico chega ao cliente e não funciona com o setup dele (porta, driver, sistema) — gera devolução mesmo sem defeito real.</p>
+          <div class="impact-stat danger">Categoria com uma das maiores taxas de troca do e-commerce</div>
+        </div>
+      </div>
+      <div class="slide-card risk-card">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Lançamento de tecnologia com fila">
+          <span class="step-badge alert">Risco 02</span>
+        </div>
+        <div class="card-body">
+          <h3>Obsolescência & ruptura em lançamentos</h3>
+          <p>Tecnologia muda rápido: estoque parado perde valor, e um lançamento concorrido pode esgotar o produto em horas.</p>
+          <div class="impact-stat danger">Estoque encalhado de um lado, ruptura do outro</div>
+        </div>
+      </div>
+      <div class="slide-card risk-card">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80" alt="Pagamento com cartão online">
+          <span class="step-badge alert">Risco 03</span>
+        </div>
+        <div class="card-body">
+          <h3>Fraude e estorno de pagamento</h3>
+          <p>Compras com cartão clonado ou contestação indevida geram prejuízo direto — o produto já saiu, o dinheiro volta.</p>
+          <div class="impact-stat danger">Prejuízo dobrado: produto perdido + estorno</div>
+        </div>
+      </div>
+      <div class="slide-card risk-card">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="Atendimento ao cliente">
+          <span class="step-badge alert">Risco 04</span>
+        </div>
+        <div class="card-body">
+          <h3>Reembolso lento e mal gerido</h3>
+          <p>Sem prazo claro nem processo automatizado, o reembolso vira fonte de reclamação e queda de confiança na marca.</p>
+          <div class="impact-stat danger">Cliente insatisfeito não volta a comprar</div>
+        </div>
+      </div>
+      <div class="slide-card risk-card" style="border-color: rgba(248,113,113,0.6); background: linear-gradient(180deg, rgba(50,20,24,0.35) 0%, var(--bg-surface) 60%);">
+        <div class="card-image-wrap">
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="Entregador em rota de entrega">
+          <span class="step-badge alert">Risco 05 · Destaque</span>
+        </div>
+        <div class="card-body">
+          <h3>Cancelamento em rota sem aviso ao motorista</h3>
+          <p>Cliente cancela pelo app, mas o motorista não é avisado e segue a rota até o fim — descobrindo o cancelamento só na porta do cliente.</p>
+          <div class="impact-stat danger">Combustível, tempo e capacidade de entrega perdidos →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: SITUAÇÃO-PROBLEMA -->
+  <section class="slide" id="slide-5">
+    <div class="slide-header">
+      <span class="section-tag">04 · Situação-Problema</span>
+      <h2>Quando o cliente cancela e o motorista não sabe</h2>
+      <p class="section-sub">O cenário mais crítico que identificamos na malha logística — vamos detalhar como ele acontece, passo a passo.</p>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-num">1</div>
+          <h5>Cliente cancela</h5>
+          <p>Pedido já está a caminho quando o cliente cancela pelo app.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">2</div>
+          <h5>Sistema recebe</h5>
+          <p>O back-office registra o cancelamento normalmente.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">3</div>
+          <h5>Motorista não é avisado</h5>
+          <p>Sem integração em tempo real, ele segue apenas o romaneio impresso.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">4</div>
+          <h5>Rota completa</h5>
+          <p>Ele percorre todo o trajeto até o endereço do cliente normalmente.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">✕</div>
+          <h5>Descobre na porta</h5>
+          <p>Só ao tentar entregar é que fica sabendo que o pedido foi cancelado.</p>
+        </div>
+      </div>
+      <div class="outcome-strip">
+        <div class="metric-card">
+          <div class="metric-value">⛽</div>
+          <div class="metric-info"><h4>Combustível perdido</h4><p>Trajeto de ida rodado à toa, sem entrega concluída.</p></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">⏱️</div>
+          <div class="metric-info"><h4>Tempo perdido</h4><p>Atraso reflete nas próximas entregas da mesma rota.</p></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">📦</div>
+          <div class="metric-info"><h4>Produto em risco</h4><p>Retorno ao CD aumenta a chance de avaria no periférico.</p></div>
+        </div>
+      </div>
+      <div class="formula-box">
+        custo_do_erro = km_rodado_sem_entrega × custo_combustível<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;+ tempo_perdido × custo_hora_motorista<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;+ risco_avaria(produto) + atraso_propagado(próximas_entregas)<br>
+        resultado = <span class="res-danger">prejuízo evitável, causado só por falta de aviso em tempo real</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: SOLUÇÕES -->
+  <section class="slide" id="slide-6">
+    <div class="slide-header">
+      <span class="section-tag">05 · Soluções <span class="section-owner">— Filipe</span></span>
+      <h2>O que fazemos para resolver cada risco</h2>
+      <p class="section-sub">Para cada risco mapeado, uma resposta concreta — com destaque para a solução do cancelamento em rota.</p>
+    </div>
+    <div class="two-col-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="text-block">
+        <div class="risk-solution-pair">
+          <div class="rsp-risk">⚠️ Devolução por incompatibilidade</div>
+          <div class="rsp-arrow">↳</div>
+          <div class="rsp-solution"><strong>Checador de compatibilidade</strong> na página do produto + specs e fotos detalhadas antes da compra</div>
+        </div>
+        <div class="risk-solution-pair">
+          <div class="rsp-risk">⚠️ Obsolescência & ruptura</div>
+          <div class="rsp-arrow">↳</div>
+          <div class="rsp-solution"><strong>Curva ABC + parceria direta</strong> com fabricantes para giro rápido e reposição prioritária dos itens A</div>
+        </div>
+        <div class="risk-solution-pair">
+          <div class="rsp-risk">⚠️ Fraude e estorno</div>
+          <div class="rsp-arrow">↳</div>
+          <div class="rsp-solution"><strong>Antifraude automatizado</strong> na aprovação do pagamento, antes de reservar o estoque</div>
+        </div>
+        <div class="risk-solution-pair">
+          <div class="rsp-risk">⚠️ Reembolso lento</div>
+          <div class="rsp-arrow">↳</div>
+          <div class="rsp-solution"><strong>Reembolso ágil com prazo fixo</strong> e status visível para o cliente acompanhar</div>
+        </div>
+      </div>
+      <div class="solution-card" style="border-color: rgba(34,211,238,0.4); background: linear-gradient(180deg, rgba(25,35,58,0.5) 0%, var(--bg-surface) 60%);">
+        <div class="box-badge violet">Solução em Destaque</div>
+        <h3 style="font-size:19px;margin-bottom:10px;">NozTrack: aviso em tempo real para o motorista</h3>
+        <p style="font-size:14px;color:var(--text-sub);line-height:1.7;margin-bottom:14px;">Conectamos o cancelamento do pedido direto ao aplicativo do motorista — sem depender de romaneio impresso.</p>
+        <ul class="mini-list">
+          <li>Cliente cancela → notificação push chega ao motorista em segundos</li>
+          <li>Geofence identifica a posição do motorista e recalcula a rota antes da chegada</li>
+          <li>Se o cancelamento vier muito perto do destino, o sistema já converte em devolução simples, sem exigir nova viagem</li>
+          <li>Painel mostra a economia de km, tempo e combustível gerada por cada aviso</li>
+        </ul>
+        <div class="ref-line">Detalhe funcionando na próxima seção: Demonstração</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: DEMONSTRAÇÃO -->
+  <section class="slide" id="slide-7">
+    <div class="demo-container">
+      <div class="left-panel">
+        <div class="panel-header">
+          <span class="panel-tag tag-client">Nozama Tech Store</span>
+          <h3>Checkout de Pedido 1P</h3>
+        </div>
+        <div class="product-card">
+          <div class="product-image">⌨️</div>
+          <div class="product-info">
+            <h4>Teclado Mecânico Nozama Pulse RGB</h4>
+            <p class="price">R$ 549,00</p>
+            <p class="stock">Disponível no CD Nozama Tech</p>
+          </div>
+          <form id="purchase-form" class="purchase-form">
+            <div class="form-group">
+              <label for="cust-name">Nome do Comprador:</label>
+              <input type="text" id="cust-name" value="Lucas Silva" required>
+            </div>
+            <div class="form-group">
+              <label for="cust-city">Destino da Entrega:</label>
+              <select id="cust-city">
+                <option value="São Paulo/SP">São Paulo / SP</option>
+                <option value="Campinas/SP">Campinas / SP</option>
+                <option value="Curitiba/PR">Curitiba / PR</option>
+                <option value="Belo Horizonte/MG">Belo Horizonte / MG</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-buy">🛍️ Confirmar Compra 1P</button>
+          </form>
+          <div id="client-feedback" class="client-feedback hidden">
+            ✅ Pedido Aprovado! Acompanhe a entrega ao lado.
+          </div>
+        </div>
+      </div>
+      <div class="right-panel">
+        <div class="panel-header">
+          <div>
+            <span class="panel-tag tag-wms">Painel de Entrega Nozama Tech</span>
+            <h3>Rota até o Cliente</h3>
+          </div>
+          <div class="mode-toggle" id="mode-toggle" style="display:none;">
+            <button class="mode-btn active-old" id="btn-mode-old" onclick="setMode('old')">Sistema Antigo</button>
+            <button class="mode-btn" id="btn-mode-noz" onclick="setMode('noztrack')">NozTrack</button>
+          </div>
+        </div>
+        <div id="no-order-placeholder" class="placeholder-box">
+          <div class="pulse-icon">👈</div>
+          <p>Clique em "Confirmar Compra 1P" para acompanhar o pedido saindo do estoque até a rota de entrega...</p>
+        </div>
+        <div id="active-logistics-box" class="active-logistics hidden">
+          <div class="order-summary-bar">
+            <div><small>Pedido:</small> <strong id="display-order-id">-</strong></div>
+            <div><small>Cliente:</small> <span id="display-cust-name">-</span></div>
+            <div><small>Destino:</small> <span id="display-cust-city">-</span></div>
+            <div><small>Posição no CD:</small> <span id="display-wms-loc">Rua 02 - M01 - NV3</span></div>
+          </div>
+          <div class="stepper-wrapper">
+            <div class="stepper" id="stepper-list"></div>
+          </div>
+          <div class="current-step-card" id="current-step-card-wrap">
+            <div class="step-card-header">
+              <span id="current-step-badge" class="step-number">Etapa 1/8</span>
+              <h4 id="current-step-title">Pagamento & Antifraude</h4>
+            </div>
+            <p id="current-step-desc">Validação de crédito e entrada do pedido no sistema do centro de distribuição.</p>
+            <button id="advance-step-btn" class="btn btn-advance" onclick="advanceStep()">
+              Avançar para Próxima Etapa →
+            </button>
+          </div>
+          <div id="cancel-scenario-box" class="cancel-scenario-box hidden">
+            <h5>🚚 Motorista a caminho — simule o cancelamento em rota</h5>
+            <p>Escolha o sistema acima e veja o que acontece se o cliente cancelar agora.</p>
+            <div class="btn-row">
+              <button class="btn-small btn-cancel" onclick="simulateCancel()">🚫 Cliente cancela agora</button>
+              <button class="btn-small btn-continue" onclick="continueDelivery()">✅ Seguir até a entrega</button>
+            </div>
+          </div>
+          <div id="outcome-box-wrap"></div>
+          <div class="log-terminal" id="demo-log-terminal">
+            <div class="log-line">[SYSTEM]: Aguardando eventos do pedido...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: DIFERENCIAL -->
+  <section class="slide" id="slide-8">
+    <div class="slide-header">
+      <span class="section-tag">06 · Diferencial</span>
+      <h2>O que nos diferencia de outros e-commerces de periféricos</h2>
+      <p class="section-sub">Não competimos só em preço — competimos em confiança durante a compra e na entrega.</p>
+    </div>
+    <div class="diff-hero-card">
+      <div class="diff-hero-icon">📡</div>
+      <div>
+        <div class="box-badge violet">Diferencial Principal</div>
+        <h3 style="font-size:20px;margin-bottom:6px;color:white;">NozTrack — aviso de cancelamento em tempo real</h3>
+        <p style="font-size:14px;color:var(--text-sub);line-height:1.65;">Nenhum concorrente do setor integra o cancelamento do cliente direto ao app do motorista com geofence. É o diferencial que nasceu resolvendo o nosso maior risco operacional.</p>
+      </div>
+    </div>
+    <div class="four-cards-grid">
+      <div class="feature-card">
+        <div class="icon-wrap">🧩</div>
+        <h4>Selo de Compatibilidade Verificada</h4>
+        <p>Cada produto mostra, antes da compra, com quais notebooks, sistemas e portas ele funciona — reduzindo a devolução por incompatibilidade.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">🛡️</div>
+        <h4>Garantia Estendida Automática</h4>
+        <p>Todo periférico Nozama Tech sai do CD com garantia estendida incluída, sem custo extra e sem letra miúda.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">👥</div>
+        <h4>Curadoria por Especialistas</h4>
+        <p>Catálogo revisado por quem entende de setup — menos produto genérico, mais recomendação testada.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap">💸</div>
+        <h4>Reembolso em até 48h</h4>
+        <p>Prazo fixo e acompanhamento por status no app — sem depender de ligação para saber onde está o dinheiro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: APRENDIZADO -->
+  <section class="slide" id="slide-9">
+    <div class="slide-header center">
+      <span class="section-tag">07 · Aprendizado <span class="section-owner">— Arthur</span></span>
+      <h2>O que a pesquisa em logística nos ensinou</h2>
+      <p class="section-sub">Os conceitos que sustentaram cada decisão que mostramos nesta apresentação.</p>
+    </div>
+    <div class="concepts-grid">
+      <div class="concept-card">
+        <div class="concept-header"><span class="c-number">01</span><h4>WMS & Armazenamento Caótico</h4></div>
+        <p>Um <strong>WMS</strong> em tempo real, com bipagem por RF, elimina contagens manuais. No armazenamento caótico, o item vai para o primeiro espaço livre — o software é que sabe onde tudo está.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-header"><span class="c-number">02</span><h4>Curva ABC (Princípio de Pareto)</h4></div>
+        <p>Priorizamos o estoque pela regra 80/20: os <strong>itens A</strong> (poucos SKUs, muita venda) ficam perto da doca; os <strong>itens C</strong> ocupam posições mais distantes.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-header"><span class="c-number">03</span><h4>Ponto de Pedido & Estoque de Segurança</h4></div>
+        <p>Definir quando reabastecer evita tanto a ruptura em lançamentos quanto o excesso de estoque de itens que perdem valor rápido.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-header"><span class="c-number">04</span><h4>Efeito Chicote (Bullwhip)</h4></div>
+        <p>Pequenas variações na demanda do consumidor se amplificam ao subir a cadeia até o fabricante, distorcendo pedidos se não houver dado em tempo real.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-header"><span class="c-number">05</span><h4>Rastreabilidade em Tempo Real</h4></div>
+        <p>O caso do motorista que não sabe do cancelamento nos mostrou que informação sem integração em tempo real custa dinheiro — foi daí que nasceu o NozTrack.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-header"><span class="c-number">06</span><h4>Gestão de Risco na Cadeia</h4></div>
+        <p>Aprendemos a mapear risco por etapa — compra, estoque, pagamento, entrega e pós-venda — em vez de tratar cada problema isoladamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10: CONCLUSÃO -->
+  <section class="slide" id="slide-10">
+    <div class="banner-column">
+      <div class="conclusion-banner">
+        <img src="https://images.unsplash.com/photo-1600861195091-690c92f1d2cd?auto=format&fit=crop&w=1000&q=80" alt="Setup de periféricos organizado">
+        <div class="banner-glass-card">
+          <h3>Sessão de Perguntas</h3>
+          <div class="recap-chips">
+            <span class="recap-chip">🏢 Introdução</span>
+            <span class="recap-chip">🖱️ O que Vendemos</span>
+            <span class="recap-chip">⚠️ Riscos</span>
+            <span class="recap-chip">✅ Soluções</span>
+            <span class="recap-chip">🚚 Situação-Problema</span>
+            <span class="recap-chip">🎮 Demonstração</span>
+            <span class="recap-chip">✨ Diferencial</span>
+            <span class="recap-chip">📚 Aprendizado</span>
+          </div>
+          <p>Obrigado pela atenção! Mostramos a Nozama Tech pivotando para periféricos, os riscos reais do setor — do estoque ao cancelamento em rota — e como o NozTrack transforma nosso maior risco logístico em diferencial. Abrimos espaço para perguntas.</p>
+          <div class="qa-badge">💬 Espaço aberto para Debate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="deck-controls">
+  <button class="nav-control-btn" onclick="prevSlide()" id="btn-prev">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    <span>Slide Anterior</span>
+  </button>
+  <div class="slide-dots" id="dots-container"></div>
+  <button class="nav-control-btn" onclick="nextSlide()" id="btn-next">
+    <span>Próximo Slide</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+</footer>
+
+<script>
+let currentSlide = 1;
+const totalSlides = 10;
+let isAnimating = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+  createDots();
+  updateSlide(1, 'next');
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === "Space") nextSlide();
+    if (e.key === "ArrowLeft") prevSlide();
+  });
+});
+
+function updateSlide(targetIndex, direction = 'next') {
+  if (isAnimating || (targetIndex === currentSlide && targetIndex !== 1)) return;
+  const currentSlideEl = document.querySelector(".slide.active");
+  const nextSlideEl = document.getElementById(`slide-${targetIndex}`);
+  if (!nextSlideEl) return;
+  isAnimating = true;
+
+  const progressPercent = (targetIndex / totalSlides) * 100;
+  document.getElementById("progress-bar").style.width = `${progressPercent}%`;
+  document.getElementById("slide-number-top").innerText = `${String(targetIndex).padStart(2,'0')} / ${String(totalSlides).padStart(2,'0')}`;
+
+  document.querySelectorAll(".dot").forEach((dot, idx) => {
+    dot.classList.toggle("active", idx + 1 === targetIndex);
+  });
+
+  if (currentSlideEl && currentSlideEl !== nextSlideEl) {
+    if (direction === 'next') {
+      currentSlideEl.classList.add("exit-left");
+      nextSlideEl.classList.remove("enter-left");
+    } else {
+      currentSlideEl.classList.remove("exit-left");
+      nextSlideEl.classList.add("enter-left");
+    }
+    currentSlideEl.classList.remove("active");
+    setTimeout(() => {
+      currentSlideEl.classList.remove("exit-left");
+      nextSlideEl.classList.add("active");
+      nextSlideEl.classList.remove("enter-left");
+      isAnimating = false;
+    }, 450);
+  } else {
+    nextSlideEl.classList.add("active");
+    isAnimating = false;
+  }
+  currentSlide = targetIndex;
+}
+
+function nextSlide() { if (currentSlide < totalSlides) updateSlide(currentSlide + 1, 'next'); }
+function prevSlide() { if (currentSlide > 1) updateSlide(currentSlide - 1, 'prev'); }
+function goToSlide(index) { const direction = index > currentSlide ? 'next' : 'prev'; updateSlide(index, direction); }
+
+function createDots() {
+  const container = document.getElementById("dots-container");
+  container.innerHTML = "";
+  for (let i = 1; i <= totalSlides; i++) {
+    const dot = document.createElement("div");
+    dot.className = `dot ${i === 1 ? "active" : ""}`;
+    dot.onclick = () => goToSlide(i);
+    container.appendChild(dot);
+  }
+}
+
+/* --- DEMONSTRAÇÃO INTERATIVA: ENTREGA NOZAMA TECH + CENÁRIO DE CANCELAMENTO EM ROTA --- */
+const logisticsSteps = [
+  { id: 1, title: "1. Pagamento & Antifraude", desc: "Aprovação do pagamento no gateway e reserva imediata do periférico no estoque Nozama Tech." },
+  { id: 2, title: "2. Separação (Picking)", desc: "Localização do item no armazenamento caótico e agrupamento por onda de picking." },
+  { id: 3, title: "3. Conferência & Embalagem", desc: "Checagem do item certo e embalagem adequada para proteger o periférico no transporte." },
+  { id: 4, title: "4. Nota Fiscal & Etiqueta", desc: "Emissão da Nota Fiscal Eletrônica e etiqueta com código de rastreio." },
+  { id: 5, title: "5. Expedição (Doca)", desc: "Triagem automatizada do pacote para a doca da transportadora correta." },
+  { id: 6, title: "6. Transporte até o Hub", desc: "Embarque em carga fechada até o hub mais próximo do cliente." },
+  { id: 7, title: "7. Rota de Entrega (Last Mile)", desc: "Motorista sai para entrega. É aqui que um cancelamento tardio pode virar prejuízo — veja abaixo." },
+  { id: 8, title: "8. Entrega Confirmada", desc: "Entrega ao cliente e assinatura do comprovante digital (POD)." }
+];
+
+let activeOrder = null;
+let currentMode = "old";
+
+document.getElementById("purchase-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const custName = document.getElementById("cust-name").value;
+  const custCity = document.getElementById("cust-city").value;
+
+  activeOrder = {
+    id: `NOZ-${Math.floor(10000 + Math.random() * 90000)}`,
+    customer: custName,
+    city: custCity,
+    step: 1,
+    resolved: false
+  };
+
+  document.getElementById("no-order-placeholder").classList.add("hidden");
+  document.getElementById("active-logistics-box").classList.remove("hidden");
+  document.getElementById("client-feedback").classList.remove("hidden");
+  document.getElementById("cancel-scenario-box").classList.add("hidden");
+  document.getElementById("mode-toggle").style.display = "none";
+  document.getElementById("outcome-box-wrap").innerHTML = "";
+  document.getElementById("current-step-card-wrap").classList.remove("hidden");
+
+  document.getElementById("display-order-id").innerText = activeOrder.id;
+  document.getElementById("display-cust-name").innerText = activeOrder.customer;
+  document.getElementById("display-cust-city").innerText = activeOrder.city;
+
+  renderStepper();
+  updateStepView();
+
+  const terminal = document.getElementById("demo-log-terminal");
+  terminal.innerHTML = "";
+  addLog(`[PAGAMENTO]: Pedido ${activeOrder.id} aprovado para ${activeOrder.customer}. Estoque reservado.`);
+});
+
+function renderStepper() {
+  const container = document.getElementById("stepper-list");
+  container.innerHTML = "";
+  logisticsSteps.forEach(s => {
+    const item = document.createElement("div");
+    let stateClass = "";
+    if (s.id < activeOrder.step) stateClass = "completed";
+    if (s.id === activeOrder.step) stateClass = "active";
+    item.className = `step-item ${stateClass}`;
+    item.innerText = s.id;
+    container.appendChild(item);
+  });
+}
+
+function updateStepView() {
+  const currentObj = logisticsSteps.find(s => s.id === activeOrder.step);
+  const btn = document.getElementById("advance-step-btn");
+  document.getElementById("current-step-badge").innerText = `Etapa ${activeOrder.step}/8`;
+  document.getElementById("current-step-title").innerText = currentObj.title;
+  document.getElementById("current-step-desc").innerText = currentObj.desc;
+
+  if (activeOrder.step === 7 && !activeOrder.resolved) {
+    document.getElementById("current-step-card-wrap").classList.add("hidden");
+    document.getElementById("cancel-scenario-box").classList.remove("hidden");
+    document.getElementById("mode-toggle").style.display = "flex";
+    setMode("old");
+    return;
+  }
+
+  document.getElementById("current-step-card-wrap").classList.remove("hidden");
+  document.getElementById("cancel-scenario-box").classList.add("hidden");
+
+  if (activeOrder.step === 8) {
+    btn.innerText = "✓ Pedido Concluído e Entregue";
+    btn.disabled = true;
+    btn.style.background = "var(--success)";
+  } else {
+    btn.innerText = `Avançar para: ${logisticsSteps[activeOrder.step].title.split('.')[1]} →`;
+    btn.disabled = false;
+    btn.style.background = "var(--primary)";
+  }
+  renderStepper();
+}
+
+function advanceStep() {
+  if (activeOrder && activeOrder.step < 8) {
+    activeOrder.step++;
+    updateStepView();
+    const time = new Date().toLocaleTimeString();
+    const currentObj = logisticsSteps.find(s => s.id === activeOrder.step);
+    addLog(`[${time}] [ETAPA-${activeOrder.step}]: ${currentObj.title} concluído.`);
+  }
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById("btn-mode-old").classList.toggle("active-old", mode === "old");
+  document.getElementById("btn-mode-noz").classList.toggle("active-noz", mode === "noztrack");
+}
+function addLog(message) {
+  const terminal = document.getElementById("demo-log-terminal");
+
+  if (!terminal) return;
+
+  const line = document.createElement("div");
+  line.className = "log-line";
+  line.textContent = message;
+
+  terminal.appendChild(line);
+
+  // Mantém o terminal sempre mostrando a mensagem mais recente
+  terminal.scrollTop = terminal.scrollHeight;
+}
+
+
+function continueDelivery() {
+  activeOrder.resolved = true;
+  addLog(`[ROTA]: Sem cancelamento — motorista segue normalmente até o cliente.`);
+  activeOrder.step = 8;
+  updateStepView();
+}
+
+function simulateCancel() {
+  if (!activeOrder) return;
+  const time = new Date().toLocaleTimeString();
+  const outcomeWrap = document.getElementById("outcome-box-wrap");
+  addLog(`[${time}] [CLIENTE]: Cancelamento solicitado com o motorista já em rota.`);
+
+  if (currentMode === "old") {
+    addLog(`[SISTEMA ANTIGO]: Motorista segue apenas o romaneio impresso — sem aviso.`);
+    addLog(`[SISTEMA ANTIGO]: Motorista percorre a rota inteira até o endereço.`);
+    addLog(`[SISTEMA ANTIGO]: Entrega recusada na porta — cancelamento descoberto tarde demais.`);
+    outcomeWrap.innerHTML = `
+      <div class="outcome-box bad">
+        <strong>❌ Resultado sem NozTrack</strong>
+        12 km rodados sem entrega · ~R$ 18,40 em combustível · 22 min perdidos · risco de avaria no retorno ao CD.
+      </div>`;
+  } else {
+    addLog(`[NOZTRACK]: Push + geofence avisam o motorista em segundos.`);
+    addLog(`[NOZTRACK]: Rota recalculada automaticamente para o próximo pedido da carga.`);
+    addLog(`[NOZTRACK]: Produto redirecionado sem precisar voltar ao CD.`);
+    outcomeWrap.innerHTML = `
+      <div class="outcome-box good">
+        <strong>✅ Resultado com NozTrack</strong>
+        Viagem evitada a tempo · ~R$ 18,40 e 22 min economizados · próxima entrega da rota não atrasa.
+      </div>`;
+  }
+
+  activeOrder.resolved = true;
+  document.getElementById("cancel-scenario-box").classList.add("hidden");
+}
+</script>
+</body>
+</html>
